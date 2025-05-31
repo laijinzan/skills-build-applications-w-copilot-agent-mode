@@ -5,20 +5,9 @@ class Command(BaseCommand):
     help = 'Populate the database with test data'
 
     def handle(self, *args, **kwargs):
-        # Check if users already exist before creating
-        if not User.objects.filter(email="john.doe@example.com").exists():
-            user1 = User.objects.create(email="john.doe@example.com", name="John Doe", password="password123")
-        else:
-            user1 = User.objects.get(email="john.doe@example.com")
-
-        if not User.objects.filter(email="jane.smith@example.com").exists():
-            user2 = User.objects.create(email="jane.smith@example.com", name="Jane Smith", password="password123")
-        else:
-            user2 = User.objects.get(email="jane.smith@example.com")
-
-        # Create test teams
-        Team.objects.create(name="Team Alpha", members=["John Doe", "Jane Smith"])
-        Team.objects.create(name="Team Beta", members=["Alice", "Bob"])
+        # Ensure users are saved before creating related objects
+        user1, created = User.objects.get_or_create(email="john.doe@example.com", defaults={"name": "John Doe", "password": "password123"})
+        user2, created = User.objects.get_or_create(email="jane.smith@example.com", defaults={"name": "Jane Smith", "password": "password123"})
 
         # Create test activities
         Activity.objects.create(user=user1, type="Running", duration=30)
