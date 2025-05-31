@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-hrx@wpu0%z(jg*=r2z0yelhzpm*zwp*!)9k^qq1w=d5lyej@t7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['vigilant-cod-5gwrxpqwggqf7q9j-8000.app.github.dev', 'localhost']
 
 
 # Application definition
@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'rest_framework',
+    'djongo',
+    'corsheaders',
+    'monafit_tracker',
 ]
 
 MIDDLEWARE = [
@@ -77,6 +81,8 @@ DATABASES = {
     "default": {
         "ENGINE": "djongo",
         "NAME": "octofit_db",
+        'HOST': 'localhost',
+        'PORT': 27017,
     }
 }
 
@@ -133,7 +139,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'djongo',
     'corsheaders',
-    'monafit_tracker',
+    'octofit_tracker',
 ]
 
 MIDDLEWARE += [
