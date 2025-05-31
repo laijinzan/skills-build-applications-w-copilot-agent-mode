@@ -9,6 +9,7 @@ class Command(BaseCommand):
         user1, created = User.objects.get_or_create(email="john.doe@example.com", defaults={"name": "John Doe", "password": "password123"})
         user2, created = User.objects.get_or_create(email="jane.smith@example.com", defaults={"name": "Jane Smith", "password": "password123"})
 
+#Test
         # Create test activities
         Activity.objects.create(user=user1, type="Running", duration=30)
         Activity.objects.create(user=user2, type="Cycling", duration=45)
