@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from octofit_tracker.models import User, Team, Activity, Leaderboard, Workout
 
 class Command(BaseCommand):
-    help = 'Populate the database with test data'
+    help = 'Populate the database with test data for'
 
     def handle(self, *args, **kwargs):
         # Ensure users are saved before creating related objects
